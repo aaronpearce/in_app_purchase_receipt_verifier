@@ -199,10 +199,8 @@ APP_SPECIFIC_SHARED_SECRET = os.environ.get("APP_SPECIFIC_SHARED_SECRET")
 RECEIPT_VERIFICATION_ENVIRONMENT = os.environ.get("RECEIPT_VERIFICATION_ENVIRONMENT")
 BASE64_ENCODED_SIGNING_KEY = os.environ.get("BASE64_ENCODED_SIGNING_KEY")
 
-if RECEIPT_VERIFICATION_ENVIRONMENT == "production":
-    RECEIPT_VERIFICATION_URL = "https://buy.itunes.apple.com/verifyReceipt"
-else:
-    RECEIPT_VERIFICATION_URL = "https://sandbox.itunes.apple.com/verifyReceipt"
+PROD_RECEIPT_VERIFICATION_URL = "https://buy.itunes.apple.com/verifyReceipt"
+SANDBOX_RECEIPT_VERIFICATION_URL = "https://sandbox.itunes.apple.com/verifyReceipt"
 
 settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 
