@@ -73,9 +73,13 @@ LOGGING = {
         },
     },
     'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
         'django': {
             'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR'),
+            'level': 'INFO',
         },
     },
 }
