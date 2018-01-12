@@ -12,6 +12,6 @@ daemon = False
 loglevel = "info"
 proc_name = "in_app_purchase_receipt_verifier-production"
 worker_class = "gevent"
-debug = False
+debug = True
 
 django_settings = "in_app_purchase_receipt_verifier.settings"
