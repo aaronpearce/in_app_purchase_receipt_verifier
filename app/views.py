@@ -63,8 +63,8 @@ def verify_sandbox_receipt(request):
     payload = response.json()
     response = JSONResponse(payload)
 
-    logger.error(response)
-    logger.error(settings.SANDBOX_RECEIPT_VERIFICATION_URL)
+    logger.info(response)
+    logger.info(settings.SANDBOX_RECEIPT_VERIFICATION_URL)
 
     # If signing key is available, sign the payload to detect potential tampering.
     if settings.BASE64_ENCODED_SIGNING_KEY:
