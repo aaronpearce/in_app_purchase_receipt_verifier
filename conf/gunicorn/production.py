@@ -9,7 +9,7 @@ workers = 3
 # Supervisor needs a non-daemonized process
 daemon = False
 
-loglevel = "warning"
+loglevel = "info"
 proc_name = "in_app_purchase_receipt_verifier-production"
 worker_class = "gevent"
 debug = False
