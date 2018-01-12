@@ -27,7 +27,7 @@ def verify_receipt(request):
     response = requests.post(settings.PROD_RECEIPT_VERIFICATION_URL, data=json.dumps(data))
     payload = response.json()
     response = JSONResponse(payload)
-    response["X-THE-FUCK"] = "THE FUCK"
+
     # If signing key is available, sign the payload to detect potential tampering.
     if settings.BASE64_ENCODED_SIGNING_KEY:
         key_data = base64.b64decode(settings.BASE64_ENCODED_SIGNING_KEY)
@@ -63,7 +63,7 @@ def verify_sandbox_receipt(request):
     response = requests.post(settings.SANDBOX_RECEIPT_VERIFICATION_URL, data=json.dumps(data))
     payload = response.json()
     response = JSONResponse(payload)
-    response["X-THE-FUCK"] = settings.SANDBOX_RECEIPT_VERIFICATION_URL
+
     # If signing key is available, sign the payload to detect potential tampering.
     if settings.BASE64_ENCODED_SIGNING_KEY:
         key_data = base64.b64decode(settings.BASE64_ENCODED_SIGNING_KEY)
