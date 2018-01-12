@@ -9,9 +9,9 @@ workers = 3
 # Supervisor needs a non-daemonized process
 daemon = False
 
-loglevel = "info"
+loglevel = "warning"
 proc_name = "in_app_purchase_receipt_verifier-production"
 worker_class = "gevent"
-debug = True
+debug = False
 
 django_settings = "in_app_purchase_receipt_verifier.settings"
