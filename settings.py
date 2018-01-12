@@ -66,79 +66,17 @@ INSTALLED_APPS = (
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
-    'root': {
-        'level': 'INFO',
-        'handlers': ['syslog', 'papertrail', 'sentry', 'console'],
-    },
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        }
-    },
-    'formatters': {
-        'condensed': {
-            'format': '[%(levelname)s] %(name)s#%(lineno)d: %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        },
-        'papertrail': {
-            'format': ':[%(levelname)s] %(name)s#%(lineno)d: %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
+    'disable_existing_loggers': False,
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
         'console': {
-            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'condensed'
-        },
-        'syslog': {
-            'level': 'INFO',
-            'address': '/dev/log',
-            'class': 'logging.handlers.SysLogHandler',
-            'formatter': 'condensed',
-            'filters': ['require_debug_false'],
-        },
-        'papertrail': {
-            'level': 'INFO',
-            'class': 'logging.handlers.SysLogHandler',
-            'address': ('logs.papertrailapp.com', 22222),
-            'filters': ['require_debug_false'],
-            'formatter': 'papertrail',
-        },
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.handlers.SentryHandler',
-            'filters': ['require_debug_false'],
         },
     },
-   'loggers': {
-        'sorl': {
-            'handlers': ['syslog', 'console'],
-            'propagate': False,
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR'),
         },
-        'raven': {
-            'handlers': ['sentry'],
-            'propagate': False
-        },
-#        'django.db.backends': {
-#            'level': 'INFO',
-#            'propagate': False,
-#            'handlers': ['syslog', 'console', 'sentry'],
-#        },
-#        'django.request': {
-#            'level': 'INFO',
-#            'propagate': False,
-#            'handlers': ['syslog', 'console', 'sentry'],
-#        },
     },
 }
 
