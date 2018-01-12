@@ -53,6 +53,7 @@ def verify_receipt(request):
 
     return response
 
+@csrf_exempt
 def verify_sandbox_receipt(request):
     data = {
         'receipt-data': request.body.strip().decode("utf-8"),
