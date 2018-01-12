@@ -26,7 +26,7 @@ def verify_receipt(request):
 
     url = settings.PROD_RECEIPT_VERIFICATION_URL
     if request.POST["mode"] == "sandbox":
-         url = settings.SANDBOX_RECEIPT_VERIFICATION_URL
+        url = settings.SANDBOX_RECEIPT_VERIFICATION_URL
 
     response = requests.post(url, data=json.dumps(data))
     payload = response.json()
